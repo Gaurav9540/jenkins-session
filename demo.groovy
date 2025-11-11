@@ -1,5 +1,12 @@
 pipeline {
     agent any
+    
+    environment {
+        APP_NAME = 'mvn-project'
+        DOCKERHUB_USER = 'bala976'
+        IMAGE = "${DOCKERHUB_USER}/${APP_NAME}"
+    }
+
     stages {
         stage('pull'){
             steps {
