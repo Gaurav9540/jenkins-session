@@ -21,7 +21,7 @@ pipeline {
             }
         }
 
-        stage('Deploy'){
+        stage('Deploy on Docker'){
             steps {
                 echo "deploy successfully!"
             }
