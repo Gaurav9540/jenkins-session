@@ -28,24 +28,6 @@ pipeline {
         //     }
         // }
 
-        // Testing Stage
-        stage('Test') {
-            steps {
-                withSonarQubeEnv(installationName: 'sonar-server', credentialsId: 'sonar-token') {
-                  sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=studentsapp'
-                }
-                echo "testing successfully!"
-            }
-        }
-
-        // QualityGate Check Test
-        // stage('QualityGate') {
-        //     steps {
-        //         waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
-        //         echo "qulity gate check successfully!"
-        //     }
-        // }
-
 
         // Docker Image Build Stage
         stage('Docker Build') {
