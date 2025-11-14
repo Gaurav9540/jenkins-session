@@ -30,6 +30,13 @@ pipeline {
             }
         }
 
+         stage('QualityGate') {
+            steps {
+                waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+                echo "qulity gate check successfully!"
+            }
+        }
+
         // Docker Image Build Stage
         stage('Docker Build') {
             steps {
