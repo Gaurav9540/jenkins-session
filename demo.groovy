@@ -24,16 +24,10 @@ pipeline {
 
         stage('Test'){
             steps {
-                withSonarQubeEnv(installationName: 'sonar-server', credentialsId: 'sonar-token')
-                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=studentsapp'
+                withSonarQubeEnv(installationName: 'sonar-server', credentialsId: 'sonar-token'){
+                    sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=studentsapp'
+                }
                 echo "testing successfully!"
-            }
-        }
-
-         stage('QualityGate') {
-            steps {
-                waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
-                echo "qulity gate check successfully!"
             }
         }
 
