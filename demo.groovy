@@ -27,6 +27,7 @@ pipeline {
                 withSonarQubeEnv(installationName: 'sonar-server', credentialsId: 'sonar-token')
                 sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=studentsapp'
             }
+            echo "testing successfully!"
         }
 
         // Docker Image Build Stage
